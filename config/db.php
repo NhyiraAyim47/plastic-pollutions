@@ -4,22 +4,21 @@
 // Edit the constants below to match your hosting environment
 // ============================================================
 
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'plasticpollutions');
-define('DB_USER', 'root');          // Change to your MySQL username
-define('DB_PASS', '');              // Change to your MySQL password
+define('DB_HOST',    $_ENV['DB_HOST']     ?? 'localhost');
+define('DB_NAME',    $_ENV['DB_NAME']     ?? 'plasticpollutions');
+define('DB_USER',    $_ENV['DB_USER']     ?? 'root');
+define('DB_PASS',    $_ENV['DB_PASS']     ?? '');
 define('DB_CHARSET', 'utf8mb4');
 
 define('SITE_NAME',  'PlasticPollutions');
-define('SITE_URL',   'http://localhost/WEBAPP_PlasticPollutions'); // Change to your domain
+define('SITE_URL',   $_ENV['SITE_URL']   ?? 'http://localhost/WEBAPP_PlasticPollutions');
 define('SITE_EMAIL', 'noreply@plasticpollutions.edu.gh');
 
-// SMTP Configuration for PHPMailer (OTP emails)
-define('SMTP_HOST',     'smtp.gmail.com');   // e.g. smtp.gmail.com
-define('SMTP_PORT',     587);
-define('SMTP_USER',     'nhyirahayim@gmail.com');   // Your Gmail or SMTP email
-define('SMTP_PASS',     'nrhkjydmmysdrhpd');       // Gmail App Password (not account password)
-define('SMTP_FROM',     'nhyirahayim@gmail.com');
+define('SMTP_HOST',      'smtp.gmail.com');
+define('SMTP_PORT',      587);
+define('SMTP_USER',      $_ENV['SMTP_USER'] ?? '');
+define('SMTP_PASS',      $_ENV['SMTP_PASS'] ?? '');
+define('SMTP_FROM',      $_ENV['SMTP_USER'] ?? '');
 define('SMTP_FROM_NAME', 'PlasticPollutions | Pentecost University');
 
 // ============================================================
