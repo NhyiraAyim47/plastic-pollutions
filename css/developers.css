@@ -1,0 +1,52 @@
+/* Flip Cards */
+.flip-card { perspective:1000px; height:320px; }
+.flip-card-inner {
+  position:relative; transform-style:preserve-3d;
+  transition:transform .7s cubic-bezier(.4,.2,.2,1);
+  height:100%;
+}
+.flip-card:hover .flip-card-inner { transform:rotateY(180deg); }
+.flip-card-front, .flip-card-back {
+  position:absolute; inset:0;
+  backface-visibility:hidden; -webkit-backface-visibility:hidden;
+  border-radius:var(--radius-xl); overflow:hidden;
+}
+.flip-card-back { transform:rotateY(180deg); }
+
+.team-card-front {
+  background:#fff; box-shadow:var(--shadow-card);
+  display:flex; flex-direction:row; align-items:stretch;
+}
+.team-img-wrap { width:140px; flex-shrink:0; }
+.team-img-wrap img { width:100%; height:100%; object-fit:cover; }
+.team-card-body { padding:24px; flex:1; }
+.team-card-body h4 { font-size:1.15rem; margin-bottom:4px; }
+.team-role { color:var(--pp-green); font-size:.88rem; font-weight:600; margin-bottom:12px; }
+.team-skills { display:flex; flex-wrap:wrap; gap:6px; }
+.team-skill { background:var(--pp-green-pale); color:var(--pp-green); font-size:.72rem; font-weight:600; padding:3px 10px; border-radius:50px; }
+
+.team-card-back {
+  background:linear-gradient(135deg,var(--pp-green),var(--pp-green-mid));
+  display:flex; align-items:center; justify-content:center;
+  padding:32px;
+}
+.team-back-content { color:#fff; text-align:center; }
+.team-quote { margin-bottom:16px; }
+.team-quote i { font-size:2rem; color:rgba(255,255,255,.4); }
+.team-quote p { font-style:italic; font-size:.9rem; color:rgba(255,255,255,.9); line-height:1.6; }
+.team-philosophy { font-size:.88rem; color:rgba(255,255,255,.75); }
+.team-social-links { display:flex; gap:8px; flex-wrap:wrap; justify-content:center; }
+.team-social-btn {
+  display:flex; align-items:center; gap:6px;
+  padding:7px 14px; border-radius:50px; font-size:.8rem; font-weight:600;
+  text-decoration:none; transition:var(--transition);
+}
+.team-social-btn:hover { transform:translateY(-2px); opacity:.9; }
+.team-social-btn.github     { background:#333; color:#fff; }
+.team-social-btn.linkedin-t { background:#0a66c2; color:#fff; }
+.team-social-btn.email-t    { background:rgba(255,255,255,.2); color:#fff; border:1px solid rgba(255,255,255,.4); }
+
+.project-info-card { background:#fff; border-radius:var(--radius-md); box-shadow:var(--shadow-card); padding:20px 12px; text-align:center; }
+.project-info-icon { font-size:1.8rem; margin-bottom:8px; }
+.project-info-label { font-size:.72rem; font-weight:700; color:var(--pp-muted); text-transform:uppercase; letter-spacing:.08em; }
+.project-info-value { font-size:.82rem; font-weight:600; color:var(--pp-text); margin-top:4px; }

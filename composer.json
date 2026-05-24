@@ -1,0 +1,13 @@
+{
+  "name": "plasticpollutions/webapp",
+  "description": "PlasticPollutions Web Application – Pentecost University PUIS304",
+  "type": "project",
+  "require": {
+    "phpmailer/phpmailer": "^6.9"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  }
+}

@@ -1,0 +1,220 @@
+/* css/animations.css – PlasticPollutions 3D Animations & Effects */
+
+/* ─── Scroll-triggered reveal ───────────────────────────── */
+.reveal        { opacity:0; transform:translateY(40px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.left   { transform:translateX(-40px); }
+.reveal.right  { transform:translateX(40px); }
+.reveal.scale  { transform:scale(.92); }
+.reveal.active { opacity:1; transform:none; }
+
+.reveal-delay-1 { transition-delay: .1s; }
+.reveal-delay-2 { transition-delay: .2s; }
+.reveal-delay-3 { transition-delay: .3s; }
+.reveal-delay-4 { transition-delay: .4s; }
+
+/* ─── 3D Tilt Card (applied via JS) ────────────────────── */
+.tilt-card { transform-style: preserve-3d; transition: transform .1s ease; }
+.tilt-card-inner { transform: translateZ(20px); }
+
+/* ─── Floating elements ─────────────────────────────────── */
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(-14px); }
+}
+@keyframes float-slow {
+  0%,100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-20px) rotate(5deg); }
+}
+.float      { animation: float 3.5s ease-in-out infinite; }
+.float-slow { animation: float-slow 6s ease-in-out infinite; }
+
+/* ─── Shimmer loading skeleton ──────────────────────────── */
+@keyframes shimmer {
+  from { background-position: -600px 0; }
+  to   { background-position:  600px 0; }
+}
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 600px 100%;
+  animation: shimmer 1.4s infinite;
+  border-radius: 8px;
+}
+
+/* ─── Glowing pulse (used on CTA buttons) ───────────────── */
+@keyframes glow-pulse {
+  0%,100% { box-shadow: 0 0 8px rgba(0,230,118,.4); }
+  50%      { box-shadow: 0 0 24px rgba(0,230,118,.8), 0 0 48px rgba(0,230,118,.3); }
+}
+.glow-pulse { animation: glow-pulse 2.5s ease-in-out infinite; }
+
+/* ─── Ripple effect on buttons ──────────────────────────── */
+.ripple-btn { position: relative; overflow: hidden; }
+.ripple-btn .ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,.35);
+  transform: scale(0);
+  animation: ripple-anim .6s linear;
+  pointer-events: none;
+}
+@keyframes ripple-anim {
+  to { transform: scale(4); opacity: 0; }
+}
+
+/* ─── Typing cursor animation ───────────────────────────── */
+@keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0; } }
+.typing-cursor::after { content:'|'; animation: blink 1s infinite; }
+
+/* ─── Page transition fade ──────────────────────────────── */
+.page-fade { animation: pageFade .5s ease; }
+@keyframes pageFade { from { opacity:0; } to { opacity:1; } }
+
+/* ─── Number counter spin ───────────────────────────────── */
+@keyframes countUp {
+  from { transform: translateY(20px); opacity:0; }
+  to   { transform: translateY(0);    opacity:1; }
+}
+.counter-active { animation: countUp .4s ease; }
+
+/* ─── Card flip (used on team cards) ───────────────────── */
+.flip-card { perspective: 1000px; }
+.flip-card-inner {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform .7s cubic-bezier(.4,.2,.2,1);
+  height: 320px;
+}
+.flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
+.flip-card-front,
+.flip-card-back {
+  position: absolute; inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.flip-card-back { transform: rotateY(180deg); }
+
+/* ─── Progress bar 3D ───────────────────────────────────── */
+.progress-3d {
+  height: 10px;
+  border-radius: 5px;
+  background: #e2e8f0;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,.12);
+  overflow: hidden;
+}
+.progress-3d .progress-fill {
+  height: 100%;
+  border-radius: 5px;
+  background: linear-gradient(90deg, #0a4d2f, #1a8a52, #00e676);
+  box-shadow: 0 2px 8px rgba(10,77,47,.4);
+  transition: width 1.5s cubic-bezier(.25,.8,.25,1);
+  position: relative;
+}
+.progress-3d .progress-fill::after {
+  content: '';
+  position: absolute; top:0; left:0; right:0; bottom:0;
+  background: linear-gradient(to bottom, rgba(255,255,255,.3), transparent);
+  border-radius: 5px;
+}
+
+/* ─── Notification badge bounce ─────────────────────────── */
+@keyframes badge-bounce {
+  0%,100% { transform: scale(1); }
+  30%      { transform: scale(1.3); }
+  60%      { transform: scale(.9); }
+}
+.badge-bounce { animation: badge-bounce .5s ease; }
+
+/* ─── Particle background dots (decorative) ─────────────── */
+.bg-particles { position: relative; overflow: hidden; }
+.bg-particles::before {
+  content:'';
+  position: absolute; inset:0;
+  background-image:
+    radial-gradient(circle, rgba(0,230,118,.12) 1px, transparent 1px),
+    radial-gradient(circle, rgba(10,77,47,.08) 1px, transparent 1px);
+  background-size: 40px 40px, 80px 80px;
+  pointer-events: none;
+}
+
+/* ─── Loader spinner (full-page) ────────────────────────── */
+#pageLoader {
+  position: fixed; inset:0;
+  background: #0a4d2f;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  z-index: 99999;
+  transition: opacity .5s ease;
+}
+#pageLoader.hidden { opacity:0; pointer-events:none; }
+.loader-logo { font-size: 3rem; animation: float 1.5s ease-in-out infinite; }
+.loader-bar {
+  width: 160px; height: 4px;
+  background: rgba(255,255,255,.2);
+  border-radius: 2px;
+  margin-top: 24px;
+  overflow: hidden;
+}
+.loader-fill {
+  height: 100%;
+  background: #00e676;
+  border-radius: 2px;
+  animation: loaderAnim 1.8s ease-in-out infinite;
+}
+@keyframes loaderAnim {
+  0%   { width:0%;   margin-left:0; }
+  50%  { width:80%;  margin-left:10%; }
+  100% { width:0%;   margin-left:100%; }
+}
+
+/* ─── Toast notifications ───────────────────────────────── */
+.toast-container-pp {
+  position: fixed;
+  top: 80px; right: 20px;
+  z-index: 9998;
+  display: flex; flex-direction: column; gap: 8px;
+  pointer-events: none;
+}
+.toast-pp {
+  background: #fff;
+  border-radius: 12px;
+  padding: 14px 20px;
+  box-shadow: 0 8px 32px rgba(0,0,0,.2);
+  display: flex; align-items: center; gap: 12px;
+  font-size: .9rem;
+  font-weight: 500;
+  pointer-events: all;
+  transform: translateX(120%);
+  transition: transform .4s cubic-bezier(.25,.8,.25,1);
+  border-left: 4px solid var(--pp-green);
+  max-width: 320px;
+}
+.toast-pp.show    { transform: translateX(0); }
+.toast-pp.success { border-color: #00c853; }
+.toast-pp.error   { border-color: #f44336; }
+.toast-pp.info    { border-color: #2196f3; }
+
+/* ─── Smooth image load fade ────────────────────────────── */
+img { transition: opacity .4s ease; }
+img.lazy-loading { opacity: 0; }
+img.lazy-loaded  { opacity: 1; }
+
+/* ─── Hover underline slide ─────────────────────────────── */
+.hover-underline {
+  position: relative;
+  display: inline-block;
+}
+.hover-underline::after {
+  content:'';
+  position:absolute;
+  bottom:-2px; left:0; right:100%;
+  height:2px;
+  background: var(--pp-green);
+  transition: right .3s ease;
+}
+.hover-underline:hover::after { right:0; }
+
+/* ─── Section divider wave ──────────────────────────────── */
+.wave-divider { line-height:0; position:relative; }
+.wave-divider svg { width:100%; display:block; }

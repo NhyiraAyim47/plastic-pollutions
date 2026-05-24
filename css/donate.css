@@ -1,0 +1,48 @@
+.quick-amounts { display:flex; flex-wrap:wrap; gap:10px; }
+.quick-amount-btn {
+  padding: 10px 20px;
+  border: 2px solid var(--pp-green);
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--pp-green);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.quick-amount-btn:hover,
+.quick-amount-btn.active {
+  background: var(--pp-green);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(10,77,47,.3);
+}
+.impact-preview {
+  background: var(--pp-green-pale);
+  border: 2px dashed var(--pp-green-light);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  display: flex; align-items: center; gap: 16px;
+  transition: var(--transition);
+}
+.impact-icon { font-size: 2rem; }
+.impact-text { font-weight: 600; color: var(--pp-green); }
+.donate-sidebar {
+  background: #fff;
+  border-radius: var(--radius-xl);
+  padding: 32px;
+  box-shadow: var(--shadow-card);
+  position: sticky;
+  top: 90px;
+}
+.impact-items { display: flex; flex-direction: column; gap: 16px; }
+.impact-item-card {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 14px;
+  background: var(--pp-green-pale);
+  border-radius: var(--radius-md);
+  transition: var(--transition);
+}
+.impact-item-card:hover { transform: translateX(4px); background: #d4edda; }
+.impact-emoji { font-size: 1.8rem; flex-shrink: 0; }
+.impact-item-card strong { display: block; color: var(--pp-green); font-size: 1rem; }
+.impact-item-card p { margin: 4px 0 0; font-size: .87rem; color: var(--pp-muted); }
